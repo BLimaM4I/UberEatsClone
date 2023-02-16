@@ -1,8 +1,13 @@
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const RestaurantItem = ({ restaurant }) => {
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate("Restaurant", { id: restaurant.id });
+  };
   return (
-    <View style={styles.restaurantContainer}>
+    <Pressable onPress={onPress} style={styles.restaurantContainer}>
       <Image
         source={{
           uri: restaurant.image,
@@ -21,7 +26,7 @@ const RestaurantItem = ({ restaurant }) => {
           <Text>{restaurant.rating}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
