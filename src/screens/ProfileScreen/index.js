@@ -12,6 +12,7 @@ const Profile = () => {
   const [name, setName] = useState(dbUser?.name || "");
   const [address, setAddress] = useState(dbUser?.address || "");
   const [lat, setLat] = useState(dbUser?.lat + "" || "0");
+
   const [lng, setLng] = useState(dbUser?.lng + "" || "0");
 
   const navigation = useNavigation();

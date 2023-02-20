@@ -1,18 +1,18 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 
 const BasketDishItem = ({ basketDish }) => {
   return (
     <View style={styles.row}>
       <View style={styles.quantityContainer}>
-        <Text>1</Text>
+        <Text>{basketDish.quantity}</Text>
       </View>
-      <Text style={{ fontWeight: "bold" }}>{basketDish.name}</Text>
-      <Text style={{ marginLeft: "auto" }}>{basketDish.price} &euro;</Text>
+      <Text style={{ fontWeight: "600" }}>{basketDish.Dish._z.name}</Text>
+      <Text style={{ marginLeft: "auto" }}>
+        {basketDish.Dish._z.price} &euro;
+      </Text>
     </View>
   );
 };
-
-export default BasketDishItem;
 
 const styles = StyleSheet.create({
   row: {
@@ -21,11 +21,14 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     paddingHorizontal: 10,
   },
+
   quantityContainer: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "lightgray",
     paddingHorizontal: 5,
     paddingVertical: 2,
-    borderRadius: 3,
     marginRight: 10,
+    borderRadius: 3,
   },
 });
+
+export default BasketDishItem;

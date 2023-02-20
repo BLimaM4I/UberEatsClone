@@ -23,10 +23,10 @@ type OrderDish @model @auth(rules: [{allow: public}]) {
 type Order @model @auth(rules: [{allow: public}]) {
   id: ID!
   userID: ID! @index(name: "byUser")
-  Restaurant: Restaurant @hasOne
-  total: Float!
-  statu: OrderStatus!
   OrderDishes: [OrderDish] @hasMany(indexName: "byOrder", fields: ["id"])
+  total: Float!
+  status: OrderStatus!
+  Restaurant: Restaurant @hasOne
 }
 
 type BasketDish @model @auth(rules: [{allow: public}]) {
@@ -39,12 +39,12 @@ type BasketDish @model @auth(rules: [{allow: public}]) {
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   sub: String!
+  name: String!
   address: String!
   lat: Float!
-  lng: Float!
-  Orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
   Baskets: [Basket] @hasMany(indexName: "byUser", fields: ["id"])
-  name: String!
+  Orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+  lng: Float!
 }
 
 type Dish @model @auth(rules: [{allow: public}]) {

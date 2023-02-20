@@ -1,10 +1,11 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import restaurants from "../../../assets/data/restaurants.json";
 import BasketDishItem from "../../components/BasketDishItem";
-
-const restaurant = restaurants[0];
+import { useBasketContext } from "../../contexts/BasketContext";
 
 const Basket = () => {
+  const { restaurant, basketDishes } = useBasketContext();
+
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{restaurant.name}</Text>
@@ -14,7 +15,7 @@ const Basket = () => {
       </Text>
 
       <FlatList
-        data={restaurant.dishes}
+        data={basketDishes}
         renderItem={({ item }) => <BasketDishItem basketDish={item} />}
       />
 

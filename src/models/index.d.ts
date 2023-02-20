@@ -155,10 +155,10 @@ type EagerOrder = {
   };
   readonly id: string;
   readonly userID: string;
-  readonly Restaurant?: Restaurant | null;
-  readonly total: number;
-  readonly statu: OrderStatus | keyof typeof OrderStatus;
   readonly OrderDishes?: (OrderDish | null)[] | null;
+  readonly total: number;
+  readonly status: OrderStatus | keyof typeof OrderStatus;
+  readonly Restaurant?: Restaurant | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly orderRestaurantId?: string | null;
@@ -171,10 +171,10 @@ type LazyOrder = {
   };
   readonly id: string;
   readonly userID: string;
-  readonly Restaurant: AsyncItem<Restaurant | undefined>;
-  readonly total: number;
-  readonly statu: OrderStatus | keyof typeof OrderStatus;
   readonly OrderDishes: AsyncCollection<OrderDish>;
+  readonly total: number;
+  readonly status: OrderStatus | keyof typeof OrderStatus;
+  readonly Restaurant: AsyncItem<Restaurant | undefined>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly orderRestaurantId?: string | null;
@@ -241,12 +241,12 @@ type EagerUser = {
   };
   readonly id: string;
   readonly sub: string;
+  readonly name: string;
   readonly address: string;
   readonly lat: number;
-  readonly lng: number;
-  readonly Orders?: (Order | null)[] | null;
   readonly Baskets?: (Basket | null)[] | null;
-  readonly name: string;
+  readonly Orders?: (Order | null)[] | null;
+  readonly lng: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -258,12 +258,12 @@ type LazyUser = {
   };
   readonly id: string;
   readonly sub: string;
+  readonly name: string;
   readonly address: string;
   readonly lat: number;
-  readonly lng: number;
-  readonly Orders: AsyncCollection<Order>;
   readonly Baskets: AsyncCollection<Basket>;
-  readonly name: string;
+  readonly Orders: AsyncCollection<Order>;
+  readonly lng: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
